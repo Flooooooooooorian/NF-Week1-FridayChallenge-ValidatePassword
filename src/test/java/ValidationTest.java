@@ -8,37 +8,37 @@ class ValidationTest {
     Validation validation = new Validation();
 
     @Test
-    void isAllowedTestVerbotenePW() {
+    void isAllowedTestForbiddenPW() {
         assertEquals(false, validation.isAllowed("12345678"));
     }
 
     @Test
-    void isAllowedTestKeinSonderzeichenUndZahlUndKurz() {
+    void isAllowedTestNoSpecialCharAndNumAndToShort() {
         assertEquals(false, validation.isAllowed("Banane"));
     }
 
     @Test
-    void isAllowedTestOhneSonderzeichen() {
+    void isAllowedTestNoSpecialChar() {
         assertEquals(false, Validation.isAllowed("IrgendwasOhneSonderzeichen213"));
     }
 
     @Test
-    void isAllowedTestZuKurz() {
+    void isAllowedTestToShort() {
         assertEquals(false, validation.isAllowed("Al!35"));
     }
 
     @Test
-    void isAllowedTestKeinKlein() {
-        assertEquals(false, validation.isAllowed("YAYPASSWOR123!!"));
+    void isAllowedTestNoLowerCase() {
+        assertEquals(false, validation.isAllowed("YAYPASSWORD123!!"));
     }
 
     @Test
-    void isAllowedTestkeinGroß() {
+    void isAllowedTestNoUpperCase() {
         assertFalse(validation.isAllowed("flüsterpasswort123!"));
     }
 
     @Test
-    void isAllowedTestKorrekt() {
+    void isAllowedTestCorrect() {
         assertEquals(true, validation.isAllowed("VorblidlichesPasswort123!§%"));
     }
 
